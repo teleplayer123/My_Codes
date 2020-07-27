@@ -24,7 +24,7 @@ print(f)
 sock.close()"""
 
 app = Flask(__name__)
-db = "C:/backdoor/uploads/"
+db = "C:/path/to/uploads/"
 if not os.path.exists(db):
     os.mkdir(db)
 
