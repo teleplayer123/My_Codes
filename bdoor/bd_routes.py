@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 app = Flask(__name__)
-db = "/home/csash/py3eg/bdoor/uploads/"
+db = "/path/to/uploads/"
 if not os.path.exists(db):
     os.mkdir(db)
 
