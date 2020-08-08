@@ -150,19 +150,20 @@ class TCP_Packet(object):
         print("\n")
         self.tcp.dump()
 
-
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, 8)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-while True:
-    try:
-        frame = s.recv(4096)
-        tcp = TCP_Packet(frame)
+try:
+    while True:
+        try:
+            frame = s.recv(4096)
+            tcp = TCP_Packet(frame)
 
-        tcp.dump()
-    except KeyboardInterrupt:
-        s.close()
-        break
-    except socket.herror:
-        s.close()
-        break
-sys.exit(0)
+            tcp.dump()
+        except KeyboardInterrupt:
+            s.close()
+            break
+        except socket.herror:
+            s.close()
+            break
+except KeyboardInterrupt:
+    sys.exit()
