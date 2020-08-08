@@ -5,7 +5,7 @@ from time import time
 import sys
 
 def xdump(filename, bs=16, en="utf8", outfile="hexdump{}.txt"):
-    logdir = "/home/csash/dumplogs"
+    logdir = "/home/username/dumplogs"
     if not os.path.exists(logdir):
         os.mkdir(logdir)
     logf = os.path.join(logdir, outfile.format(str(time()).split(".")[0][:5]))
@@ -35,5 +35,5 @@ def reader(filename, bs):
 
 infile = sys.argv[1]
 xd = xdump(infile)
-print("logged in folder /home/csash/dumplogs")
+print("logged in folder /home/username/dumplogs")
 print(xd)
