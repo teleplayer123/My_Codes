@@ -7,7 +7,7 @@ from encrypt_decrypt import encrypt, decrypt
 
 """
 user = getpass.getuser()
-if user != "csash":
+if user != "username":
     sys.exit(1)
 with open("secure.dat", "rb") as fh:
     password = pickle.loads(fh.read())
