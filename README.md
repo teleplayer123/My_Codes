@@ -12,7 +12,7 @@ Contents
 - [Project Euler](#euler)
 
 
-[Backdoor Example](bdoor/)
+[Bdoor](bdoor/)
 ----
 This is a simple python implementation of a "backdoor", which is a program that an attacker
 uses to gain entry to a victims server where access would not usually be permitted. In order to be effective, 
@@ -46,3 +46,19 @@ to a server and then downloaded on another system, in an attempt to mimic a scen
 backdoor and the attacker exploits it. I used a virtual machine on virtualbox as the victim computer, that could connect to
 "localhost", and then download the uploaded file/files. In order for this to work, the compiled backdoor program must be used 
 on the same operating system it was compiled on. 
+
+[Misc](misc/)
+----
+This folder contains various little programms I have written over the years. Listed here are some of the more useful ones:
+
+-[a2h.py](misc/a2h.py) is a cli program that takes an ascii string and converts it to hexadecimal. A usage message
+is shown when the program is run with no arguments. This program can be useful in exploits, when dealing with memory
+address's of binaries.
+ 
+-[checksum.py](misc/checksum.py) is a program I use often to verify provided checksums of download files. I adapted
+this program to be a cli for linux. Using a shellscript, the three main arguments...filename, compare_hash(hash value provided by
+the creator of the program to download), and hash_alg(i.e. sha256)...are passed to the program and run, checking that the contents
+of the files to be downloaded have not been altered.
+
+-[hexd.py](misc/hexd.py) is a hexdump program that takes a file and writes its contents in hexadecimal and ascii to
+an outfile passed as an argument. If no outfile name is provided, a new dumpfile is created based on the current time.
