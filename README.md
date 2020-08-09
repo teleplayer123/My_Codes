@@ -70,5 +70,5 @@ the time to memorize them. I also adapted this program to a cli using a bash she
 
 [Project_Euler](project_euler/)
 ----
-These are some solutions I wrote for a few of Project Euler's challenges, as well as some other codes I wrote messing aroud with
+In this folder are some solutions I wrote for a few of Project Euler's challenges, as well as some other codes I wrote messing aroud with
 the mathematically ideas behid the challenges.
