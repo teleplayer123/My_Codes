@@ -38,9 +38,6 @@ class Checksum:
         return self._checksum(self.filename)
 
 
-#c = Checksum("/home/csash/Downloads/virtualbox-6.1_6.1.4-136177_Ubuntu_bionic_amd64.deb",
-#"929d2e974047be579f9a48a0a0c9130b70933f46bc28a1314bbc2ca68cecc224")
-#print(c.verify_sum())
 fn = sys.argv[1]
 ch = sys.argv[2]
 alg = sys.argv[3]
