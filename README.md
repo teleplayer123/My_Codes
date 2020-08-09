@@ -9,7 +9,7 @@ Contents
 ----
 - [Backdoor Example](#Bdoor)
 - [Misc Programs](#Misc)
-- [Project Euler](#ProjectEuler)
+- [Project Euler](#Project_Euler)
 
 
 [Bdoor](bdoor/)
@@ -68,6 +68,6 @@ based on a string passed by the user. Other arguments can be supplied to control
 passsword. The returned passwords are not meant to be easily remembered, so I would recommend writing them down, or taking
 the time to memorize them. I also adapted this program to a cli using a bash shellscipt.
 
-[Project Euler](project_euler/)
+[Project_Euler](project_euler/)
 ----
 
