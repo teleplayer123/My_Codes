@@ -41,5 +41,3 @@ def random_pass(base_str: str="", use_seed: bool=False, seed_num: int=1, p_len: 
                             p_len, sym_mix, num_sym)
     else:
         return p
-
-print(random_pass("daisy", p_len=8, sym_mix=True))
