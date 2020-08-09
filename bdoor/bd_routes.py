@@ -1,10 +1,7 @@
-import socket as s
-import subprocess
 from flask import Flask, render_template, request, redirect, send_file, send_from_directory
 import flask
 import requests
 import os
-import getpass
 import gzip
 import zipfile
 from werkzeug.utils import secure_filename
