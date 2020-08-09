@@ -7,9 +7,9 @@ as practical use.
 
 Contents
 ----
-- [Backdoor Example](#backdoor)
-- [Misc Programs](#misc)
-- [Project Euler](#euler)
+- [Backdoor Example](#Bdoor)
+- [Misc Programs](#Misc)
+- [Project Euler](#Project Euler)
 
 
 [Bdoor](bdoor/)
@@ -67,3 +67,7 @@ an outfile passed as an argument. If no outfile name is provided, a new dumpfile
 based on a string passed by the user. Other arguments can be supplied to control length and randomness of the returned
 passsword. The returned passwords are not meant to be easily remembered, so I would recommend writing them down, or taking
 the time to memorize them. I also adapted this program to a cli using a bash shellscipt.
+
+[Project Euler](project_euler/)
+----
+
