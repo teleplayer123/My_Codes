@@ -2,8 +2,6 @@ import socket
 import sys
 import struct
 
-from hex_dump import xdump
-
 
 class EthHeader:
     def __init__(self, frame):
