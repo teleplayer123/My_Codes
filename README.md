@@ -21,7 +21,7 @@ an attacker would likely hide a backdoor in a program that a victim may install 
 [bdoor.py](bdoor/bdoor.py)
 
 This is the client code. It connects to the server, which would be listening for the client's connection on the 
-victims computer. On successful connction, the client creates a pipe that allows communiction with a victims command
+victims computer. On successful connection, the client creates a pipe that allows communiction with a victims command
 shell. This allows the attacker to access private information about the victims operating system, files, directories, etc.
 Pythons os.Popen function is used to create the pipe, but has some limitations on what commands can be executed; so some
 of these commands had to be hard coded.
@@ -49,15 +49,15 @@ on the same operating system it was compiled on.
 
 [Misc](misc/)
 ----
-This folder contains various little programms I have written over the years. Listed here are some of the more useful ones:
+This folder contains various little programs I have written over the years. Listed here are some of the more useful ones:
 
 -[a2h.py](misc/a2h.py) is a cli program that takes an ascii string and converts it to hexadecimal. A usage message
 is shown when the program is run with no arguments. This program can be useful in exploits, when dealing with memory
 address's of binaries.
  
 -[checksum.py](misc/checksum.py) is a program I use often to verify provided checksums of download files. I adapted
-this program to be a cli for linux using a bash shellscript. The three main arguments...filename, compare_hash(hash value provided by
-the creator of the program to download), and hash_alg(i.e. sha256)...are passed to the program and run, checking that the contents
+this program to be a cli for linux using a bash shellscript. The three main arguments (`filename`, `compare_hash`(hash value provided by
+the creator of the program to download), and `hash_alg`(i.e. sha256)) are passed to the program and run, checking that the contents
 of the files to be downloaded have not been altered.
 
 -[hexd.py](misc/hexd.py) is a hexdump program that takes a file and writes its contents in hexadecimal and ascii to
@@ -70,5 +70,5 @@ the time to memorize them. I also adapted this program to a cli using a bash she
 
 [Project_Euler](project_euler/)
 ----
-In this folder are some solutions I wrote for a few of Project Euler's challenges, as well as some other codes I wrote messing aroud with
-the mathematically ideas behid the challenges.
+In this folder are some solutions I wrote for a few of Project Euler's challenges, as well as some other codes I wrote messing around with
+the mathematical ideas behid the challenges.
