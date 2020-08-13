@@ -1,4 +1,5 @@
 import sys
+import re
 
 def a2h(s):
     h = []
@@ -7,8 +8,11 @@ def a2h(s):
     return "\\x".join(h)
 
 def rev_a2h(s):
-    hs = a2h(s)
-    rhs = "0x"
+    if not re.match(r"^\\x", s):
+        hs = a2h(s)
+    else:
+        hs = s
+    rhs = ""
     odd = False
     obit = ""
     r = hs.split("\\x")
@@ -17,7 +21,7 @@ def rev_a2h(s):
         r = r[1:]
         odd = True
     for i in range(len(r)-1, -1, -1):
-        rhs += r[i]
+        rhs += "\\x" + r[i]
     if odd:
         rhs += obit[0]
     return rhs
@@ -39,3 +43,4 @@ elif f in {"-r"}:
 else:
     print("Invalid Input")
     sys.exit(0)
+
