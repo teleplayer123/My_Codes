@@ -133,15 +133,15 @@ class TCPHeader:
         print(f"Urgent Pointer: {self.urg_pointer}")
 
 class TCP_Packet(object):
-    packet_num = 0
     def __init__(self, frame):
         self.eth = EthHeader(frame)
         self.ip = IPHeader(frame)
         self.tcp = TCPHeader(frame, self.ip)
-        self.packet_num += 1
+        self.bytes = frame.__sizeof__() - (self.tcp.offset-1)
+
     def dump(self):
-        print(f"\nTCP Packet #{self.packet_num}\n")
-        print("----------------------------------------")
+        print(f"\nTCP Packet\nbytes {self.bytes}")
+        print("----------------------------------------\n")
         self.eth.dump()
         print("\n")
         self.ip.dump()
@@ -150,18 +150,16 @@ class TCP_Packet(object):
 
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, 8)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
 try:
     while True:
         try:
             frame = s.recv(4096)
             tcp = TCP_Packet(frame)
-
             tcp.dump()
         except KeyboardInterrupt:
-            s.close()
-            break
-        except socket.herror:
-            s.close()
             break
 except KeyboardInterrupt:
-    sys.exit()
+    s.close()
+    sys.exit(0)
+
