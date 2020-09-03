@@ -190,8 +190,11 @@ class TCP_Packet(object):
         self.ip = IPHeader(frame)
         self.tcp = TCPHeader(frame, self.ip)
         self.bytes = frame.__sizeof__() - (self.tcp.offset-1)
+<<<<<<< HEAD
         total_header_size = self.eth.size + self.ip.size + self.tcp.size
         self.data = frame[total_header_size: total_header_size + self.tcp.offset-1]
+=======
+>>>>>>> a41b690d34e8bc39d455f87dad2a03193a4ef9aa
 
     def dump(self):
         print(f"\nTCP Packet\nbytes {self.bytes}")
@@ -218,24 +221,31 @@ if len(sys.argv) > 1:
 s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, 8)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
+<<<<<<< HEAD
 current_date = date.fromtimestamp(time())
 dumpdir = "/path/to/captures/{}".format(current_date)
 packet_by_id = defaultdict(list)
 packet_by_src_dest = defaultdict(list)
 
+=======
+>>>>>>> a41b690d34e8bc39d455f87dad2a03193a4ef9aa
 try:
     while True:
         try:
             frame = s.recv(4096)
             tcp = TCP_Packet(frame)
+<<<<<<< HEAD
             packet_by_id[tcp.ip.id].append(repr(tcp))
             packet_by_src_dest[(tcp.ip.src_addr, tcp.ip.dst_addr)].append(repr(tcp))
+=======
+>>>>>>> a41b690d34e8bc39d455f87dad2a03193a4ef9aa
             tcp.dump()
             print(str(tcp.tcp.raw_bits))
         except KeyboardInterrupt:
             break
 except KeyboardInterrupt:
     s.close()
+<<<<<<< HEAD
 finally:
     if arg in {"-s"}:
         if not os.path.exists(dumpdir):
@@ -247,3 +257,7 @@ finally:
                     fh.write(p)
                     fh.write("\n")
     sys.exit()
+=======
+    sys.exit(0)
+
+>>>>>>> a41b690d34e8bc39d455f87dad2a03193a4ef9aa
