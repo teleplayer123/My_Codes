@@ -3,10 +3,8 @@ import os
 import socket
 import struct
 import sys
-from time import time, sleep
+from time import time
 from datetime import date
-
-from hex_dump import xdump
 
 
 class EthHeader:
@@ -233,7 +231,7 @@ try:
             packet_by_id[tcp.ip.id].append(repr(tcp))
             packet_by_src_dest[(tcp.ip.src_addr, tcp.ip.dst_addr)].append(repr(tcp))
             tcp.dump()
-            xdump(tcp.tcp.raw_bits)
+            print(str(tcp.tcp.raw_bits))
         except KeyboardInterrupt:
             break
 except KeyboardInterrupt:
