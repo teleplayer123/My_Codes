@@ -43,13 +43,13 @@ def upload_file():
 
 @app.route("/upload_files", methods=["GET" ,"POST"])
 def uploadbd():
-    filenames = os.listdir("C:/backdoor/uploads")
+    filenames = os.listdir("C:/path/to/uploads")
     return render_template("/uploadbd_files.html", filenames=filenames)
 
 @app.route("/files/upload", methods=["POST"])
 def upload_bdfiles():
-    path = "C:/backdoor/dist/runbd"
-    dir_path = "C:/backdoor/uploads"
+    path = "C:/path/to/dist/runbd"
+    dir_path = "C:/path/to/uploads"
     if not os.path.exists(dir_path):
         os.mkdir(dir_path)
     files = request.files.getlist("file")
@@ -64,7 +64,7 @@ def upload_bdfiles():
 
 @app.route("/download_files", methods=["GET"])
 def download():
-    dpath = "C:/backdoor/downloads"
+    dpath = "C:/path/to/downloads"
     if not os.path.exists(dpath):
         os.mkdir(dpath)
     if len(os.listdir(db)) == 0:
@@ -73,7 +73,7 @@ def download():
     if len(os.listdir(db)) == 1:
         file = str(db + os.listdir(db)[0])
     else:
-        file = create_zip(db, "C:/backdoor/downloads/uploads.zip")
+        file = create_zip(db, "C:/path/to/downloads/uploads.zip")
     return send_file(file, as_attachment=True)
 
 if __name__ == "__main__":
