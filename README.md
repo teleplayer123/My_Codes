@@ -47,23 +47,23 @@ backdoor and the attacker exploits it. I used a virtual machine on virtualbox as
 "localhost", and then download the uploaded file/files. In order for this to work, the compiled backdoor program must be used 
 on the same operating system it was compiled on. 
 
-[Misc](misc/)
+[Misc](mycodes/)
 ----
 This folder contains various little programs I have written over the years. Listed here are some of the more useful ones:
 
--[a2h.py](misc/a2h.py) is a cli program that takes an ascii string and converts it to hexadecimal. A usage message
+-[a2h.py](mycodes/a2h.py) is a cli program that takes an ascii string and converts it to hexadecimal. A usage message
 is shown when the program is run with no arguments. This program can be useful in exploits, when dealing with memory
 address's of binaries.
  
--[checksum.py](misc/checksum.py) is a program I use often to verify provided checksums of download files. I adapted
+-[checksum.py](mycodes/checksum.py) is a program I use often to verify provided checksums of download files. I adapted
 this program to be a cli for linux using a bash shellscript. The three main arguments (`filename`, `compare_hash`(hash value provided by
 the creator of the program to download), and `hash_alg`(i.e. sha256)) are passed to the program and run, checking that the contents
 of the files to be downloaded have not been altered.
 
--[hexd.py](misc/hexd.py) is a hexdump program that takes a file and writes its contents in hexadecimal and ascii to
+-[hexd.py](mycodes/hexd.py) is a hexdump program that takes a file and writes its contents in hexadecimal and ascii to
 an outfile passed as an argument. If no outfile name is provided, a new dumpfile is created based on the current time.
 
--[randpass.py](misc/randpass.py) is one of my favorite programs I have written. It simply generates a random password
+-[randpass.py](mycodes/randpass.py) is one of my favorite programs I have written. It simply generates a random password
 based on a string passed by the user. Other arguments can be supplied to control length and randomness of the returned
 passsword. The returned passwords are not meant to be easily remembered, so I would recommend writing them down, or taking
 the time to memorize them. I also adapted this program to a cli using a bash shellscipt.
