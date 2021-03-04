@@ -2,25 +2,25 @@ from hashlib import sha256
 from random import randint, choice, seed, randrange
 import re
 import os
+import sys
 
-chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-"q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-def random_pass(base_str: str="", use_seed: bool=False, p_len: int=10, 
-                sym_mix: bool=False, num_sym: int=3) -> str:
-    if use_seed is True:
-        seed(os.urandom(2048))
+def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14, 
+                sym_mix: bool=True, num_sym: int=3, iterations: int=4) -> str:
+    chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+            "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    sym = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "~", "`"]
+    if rand_seed is True:
+        seed(os.urandom(4048))
     if base_str == "":
         for _ in range(16):
             base_str += str(choice(chars))
     b = int.from_bytes(bytes(base_str.encode()), "little")
-    change1 = b >> randint(50, 127) 
-    change2 = b << randint(1, 49)
-    changed = change1 << 2 & change2
+    n = randint(1,31)
+    changed = b << n | b >> (32 - n)
     changed = changed % 357
-    p = sha256(changed.to_bytes(8, "little")).hexdigest()
+    p = sha256(changed.to_bytes(8, "big")).hexdigest()
     size = len(p)
-    sym = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "~", "`"]
     if size < p_len:
         p += p
     while size > p_len - num_sym:
@@ -42,10 +42,13 @@ def random_pass(base_str: str="", use_seed: bool=False, p_len: int=10,
             p.insert(i, choice(sym))
             p = "".join(p)
     if not re.match(r"^[A-Za-z]+?", p):
-        return random_pass(base_str, use_seed, 
-                            p_len, sym_mix, num_sym)
+        p = choice(chars[1:24]) + "".join(p[1:])
+    if iterations > 0:
+        iterations -= 1
+        return random_pass(base_str=base_str, rand_seed=rand_seed,
+                        p_len=p_len, sym_mix=sym_mix, num_sym=num_sym, iterations=iterations)
     else:
         return p
 
-r = random_pass(use_seed=True, sym_mix=True)
+r = random_pass(p_len=16, num_sym=3, iterations=4)
 print(r)
