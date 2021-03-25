@@ -12,6 +12,8 @@ def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14,
     sym = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "~", "`"]
     if rand_seed is True:
         seed(os.urandom(4048))
+    else:
+        seed(len(base_str))
     if base_str == "":
         for _ in range(16):
             base_str += str(choice(chars))
