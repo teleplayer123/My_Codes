@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from hashlib import sha256
 from random import randint, choice, seed, randrange
 import re
@@ -25,24 +27,27 @@ def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14,
     size = len(p)
     if size < p_len:
         p += p
-    while size > p_len - num_sym:
+    if num_sym > 0:
+        p_len = p_len - num_sym
+    while size < p_len:
         s = size // 2
         p1 = p[:-s]
         p2 = p[s:]
-        if (size - num_sym) % 5 and s > p_len:
-            p = p2 + choice(chars[6:26]) + p1
+        p = p2 + choice(chars[6:26]) + p1
+        if num_sym > 0:
+            p = p[:-num_sym]
         else:
-            p = p2 + p1
-        p = p[:-num_sym]
+            p = p[:p_len]
         size = len(p)
-    for _ in range(num_sym):
-        if not sym_mix:
-            p += choice(sym)
-        else:
-            i = randrange(2, len(p))
-            p = list(p)
-            p.insert(i, choice(sym))
-            p = "".join(p)
+    if num_sym > 0:
+        for _ in range(num_sym):
+            if not sym_mix:
+                p += choice(sym)
+            else:
+                i = randrange(2, len(p))
+                p = list(p)
+                p.insert(i, choice(sym))
+                p = "".join(p)
     if not re.match(r"^[A-Za-z]+?", p):
         p = choice(chars[1:24]) + "".join(p[1:])
     if iterations > 0:
@@ -52,5 +57,5 @@ def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14,
     else:
         return p
 
-r = random_pass(p_len=16, num_sym=3, iterations=4)
+r = random_pass(p_len=36, num_sym=0, iterations=4)
 print(r)
