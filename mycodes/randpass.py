@@ -27,19 +27,21 @@ def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14,
     size = len(p)
     if size < p_len:
         p += p
-    if num_sym > 0:
-        p_len = p_len - num_sym
-    while size < p_len:
+    while True:
         s = size // 2
         p1 = p[:-s]
         p2 = p[s:]
         p = p2 + choice(chars[6:26]) + p1
-        if num_sym > 0:
-            p = p[:-num_sym]
-        else:
-            p = p[:p_len]
+        p = p[:p_len]
         size = len(p)
+        if size <= p_len:
+            break
+    if len(p) < p_len:
+        n = p_len - len(p)
+        for _ in range(n):
+            p.insert(int(len(p)//2), choice(chars)) 
     if num_sym > 0:
+        p = p[num_sym:]
         for _ in range(num_sym):
             if not sym_mix:
                 p += choice(sym)
@@ -57,5 +59,5 @@ def random_pass(base_str: str="", rand_seed: bool=True, p_len: int=14,
     else:
         return p
 
-r = random_pass(p_len=36, num_sym=0, iterations=4)
+r = random_pass(p_len=36, num_sym=3, iterations=4)
 print(r)
