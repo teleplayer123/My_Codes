@@ -63,11 +63,6 @@ of the files to be downloaded have not been altered.
 -[hexd.py](mycodes/hexd.py) is a hexdump program that takes a file and writes its contents in hexadecimal and ascii to
 an outfile passed as an argument. If no outfile name is provided, a new dumpfile is created based on the current time.
 
--[randpass.py](mycodes/randpass.py) is one of my favorite programs I have written. It simply generates a random password
-based on a string passed by the user. Other arguments can be supplied to control length and randomness of the returned
-passsword. The returned passwords are not meant to be easily remembered, so I would recommend writing them down, or taking
-the time to memorize them. I also adapted this program to a cli using a bash shellscipt.
-
 [Project_Euler](project_euler/)
 ----
 In this folder are some solutions I wrote for a few of Project Euler's challenges, as well as some other codes I wrote messing around with
